@@ -1,0 +1,36 @@
+@import './base.css';
+ /* display-flex */
+.dpf-row{
+    display: flex;
+    flex-direction: row;
+}
+.dpf-column{
+    display: flex;
+    flex-direction: column;
+}
+
+.dpf-j-btw{
+    justify-content: space-between;
+}
+
+.dpf-a-center{
+    align-items: center;
+}
+.dpf-a-bottom{
+    align-items: flex-end;
+}
+
+ /* container */
+
+.container20{
+    height: 100%;
+    width: 20%;
+}
+.container60{
+    width: 60%;
+    height: 100%;
+}
+
+.mb{
+    margin-bottom: 2em;
+}

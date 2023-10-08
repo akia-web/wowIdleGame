@@ -1,0 +1,64 @@
+.container{
+    width: 60%;
+    margin: 0 auto;
+}
+.containerBidule{
+    width: 100%;
+    height: 200px;
+}
+.containerBox{
+    color: white;
+    justify-content: end;
+    padding-left: 10px;
+}
+
+.box{
+    width: 80px;
+    height: 40px;
+    margin-bottom: 10px;
+    background-color: brown;
+}
+.left{
+    width: 20%;
+    height: 100%;
+}
+.right{
+    width: 80%; 
+}
+
+.distributor{
+    background-color: lightgray;
+}
+.containerWorker{
+    position:relative;
+}
+.workers{
+    position: absolute;
+    margin-bottom: 10px;
+    left: 40px;
+    bottom: -5px;
+    cursor: pointer;
+    background-image: url('src/assets/elfe/stand.gif');
+    background-size: cover;
+    width: 180px;
+    height: 180px;
+}
+.green{
+    background-color: green;
+}
+.container-amelioration{
+    color: white;
+    justify-content: center;
+    align-items: center;
+}
+.amelioration{
+    background-color: lightgray;
+    color : white;
+    padding: 10px;
+    margin-right: 10px;
+    height: 70px;
+    width: 70px;
+}
+.active{
+    background-color: rgb(103, 170, 227);
+}
