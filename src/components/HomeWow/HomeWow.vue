@@ -4,29 +4,38 @@
 
     <div class="container">
         <div 
-            v-for="item in player" v-bind:key="item.index"
-            class="green  mb"
+            v-for="item in level" v-bind:key="item.index"
+            class="green mb"
             
             >
                 <div class="containerBidule dpf-row dpf-j-btw dpf-a-center" v-if="!item.nextUnblock && !item.isLock">
                     <div class="containerBox container20 dpf-column">
                         <span>{{ item.gainSecondes }}$ /travailleur</span>
+                        <div>
+                            <span>{{ item.stock }}</span>
+                            <div class="box" v-on:click="getMoney(item)"></div>
+                        </div>
+                    </div>
+                    <div class="container10">
                         <button v-on:click="getManager(item)">Manager</button>
-                        <span>{{ item.stock }}</span>
-                        <div class="box" v-on:click="getMoney(item)"></div>
                     </div>
                     <div class="containerWorker container60 dpf-row dpf-a-bottom">
                         <div class="workers" :class="'class-' +item.index" v-on:click="startWorker(item)" v-for="index in item.workers" >
-                            <!-- <img width="180" :class="'image'+item.index" src="@/assets/elfe/stand.gif" alt=""> -->
                         </div>
                     </div>
                     
-                    <div class="container-amelioration container20 dpf-column">
-                        <div class="amelioration" :class="{'active':money >= item.price1 && item.level !== 'max'}"
+                    <div class="container-amelioration container10 dpf-column">
+                        <div class="amelioration" :class="{'active':money >= item.price1 && item.level !== maxLevel}"
+                        v-on:click="openPopup(item.index)">
+                        <span> lvl {{ item.level }}</span> <br>
+                        <span v-if="item.level !== maxLevel"> {{item.price1}} $</span>
+                        </div>
+
+                        <!-- <div class="amelioration" :class="{'active':money >= item.price1 && item.level !== 'max'}"
                         v-on:click="updateLevel(item)">
                         <span> lvl {{ item.level }}</span> <br>
                         <span v-if="item.level !== 'max'"> {{item.price1}} $</span>
-                        </div>
+                        </div> -->
                     </div>
                 </div> 
 
@@ -36,115 +45,63 @@
                 </div>
         </div>
     </div>
-
+    <PopupLevel :item="selectLevel" v-if="popup" @closePopup="handleClosePopup" @addWorker="handleAddWorker"/>
 
 </template>
 
 <script setup lang="ts">
 import { ref } from "vue"
 import { Level } from "@/types/Level"
-const money = ref<number>(0)
-const maxLevel:number = 800;
-const player = ref<Level[]>([
-  {
-    name:'Foret d',
-    index:0,
-    level:1,
-    maxLevel: maxLevel,
-    price1: 20,
-    priceMax:20,
-    stock: 0,
-    gainSecondes:10,
-    addWorker: [2, 3, 4, 5],
-    workers:1,
-    isLock:false,
-    complete: 2,
-    isClickable: true,
-    speedWorkers:8000,
-    nextUnblock:false,
-    priceUnblock: 0,
-    recolteTime:1000,
-    haveManager:false
-  },  
-  {
-    name:'Foret d',
-    index:1,
-    level:1,
-    maxLevel: maxLevel,
-    price1: 1000,
-    priceMax:20,
-    stock: 0,
-    gainSecondes:10,
-    addWorker: [2, 20, 50, 100],
-    workers:1,
-    isLock:true,
-    complete: 2,
-    isClickable: true,
-    speedWorkers:2000,
-    nextUnblock: true,
-    priceUnblock: 1000,
-    recolteTime:1000,
-    haveManager: false
-  },
-  
-])
+import {maxLevel, level, addWorker, money} from  "@/data/levels"
+import PopupLevel from "../popup/Level/level.vue"
+import { PopupLevelType } from "@/types/PopupLevelType"
+// const money = ref<number>(0)
+let popup = ref<boolean>(false)
+let selectLevel = ref<Level>(level.value[0])
+const infoLevel = ref<PopupLevelType | null>(null)
 
-const getManager=(item:Level)=>{
+const getManager=(item:Level):void=>{
     item.haveManager = true;
     startWorker(item);
     setInterval(function () {
         console.log('start setInterval')
     startWorker(item);
-  }, 10100);
+  }, 900);
 
 }
 
-const updateLevel = (item:Level)=>{
-    if(money.value >= item.price1 && typeof item.level !== 'string' && item.level < maxLevel ){
-        item.level = item.level+1
-        money.value = arrondir(money.value - item.price1)
-        item.price1 = arrondir(item.price1 *2)
-        item.gainSecondes = arrondir(item.gainSecondes + (item.gainSecondes*50/100))
 
-        if(item.addWorker.includes(item.level)){
-            item.workers += 1
-            const worker =  document.getElementsByClassName("class-"+item.index);
+const handleAddWorker = (data:Level) => {
+    const worker =  document.getElementsByClassName("class-"+data.index);
 
-            setTimeout(function () {
-                const bidule =  worker[item.workers-1] as HTMLElement
-                const option : {ecart:string, url:string } = getBackgroundAndGap(item)
-                bidule.style.left = option!.ecart
-                bidule.style.backgroundImage = option!.url
-            }, 100 )
-            
-        }
-        
-        if(item.level === maxLevel){
-            item.level = 'max';
-            item.price1 = 0
-        }
-    } 
+   setTimeout(function () {
+    const bidule =  worker[data.workers-1] as HTMLElement
+    const option : {ecart:string, url:string } = getBackgroundAndGap(data)
+    bidule.style.left = option!.ecart
+    bidule.style.backgroundImage = option!.url
+    }, 100 )
+
 }
 
 const getBackgroundAndGap=(item:Level):{ ecart: string; url: string }=>{
     switch (item.workers){
         case 1:
-        return {ecart:"40px",url:"url('src/assets/elfe/stand.gif')" } 
+        return {ecart:"1%",url:"url('src/assets/elfe/stand.gif')" };
         case 2: 
-        return {ecart:"30px",url:"url('src/assets/human/stand.gif')" }
+        return {ecart:"-0.5%",url:"url('src/assets/human/stand.gif')" };
         case 3: 
-        return {ecart:"20px",url:"url('src/assets/nain/stand.gif')" }
+        return {ecart:"-1%",url:"url('src/assets/nain/stand.gif')" };
         case 4: 
-        return {ecart:"10px",url:"url('src/assets/human/stand.gif')" }
+        return {ecart:"10px",url:"url('src/assets/human/stand.gif')" };
         case 5: 
-        return {ecart:"0px",url:"url('src/assets/human/stand.gif')" }
+        return {ecart:"0px",url:"url('src/assets/human/stand.gif')" };
         default:
-            return {ecart:"0px",url:"url('src/assets/human/stand.gif')" }
+            return {ecart:"0px",url:"url('src/assets/human/stand.gif')" };
     }
     
 
 }
-const startWorker = (item:Level)=>{
+const startWorker = (item:Level):void=>{
     console.log(document.styleSheets)
     if(item.isClickable){
         item.isClickable = false;
@@ -153,8 +110,8 @@ const startWorker = (item:Level)=>{
             const element = worker[i] as HTMLElement;
             setTimeout(function () {
                
-                element.classList.add('workers'+i)
-                element.style.animationDuration = item.speedWorkers+"ms"
+                element.classList.add('workers'+i);
+                element.style.animationDuration = item.speedWorkers+"ms";
 
             }, i*500)
           
@@ -162,7 +119,7 @@ const startWorker = (item:Level)=>{
                 setTimeout(function () {
                     element.classList.remove("workers"+i);
                     item.stock =arrondir(item.stock + item.gainSecondes) ;
-                    item.isClickable = true
+                    item.isClickable = true;
                    
             }, item.speedWorkers+i* 500)
         }  
@@ -172,18 +129,27 @@ const startWorker = (item:Level)=>{
 }
 
 
-const getMoney = (item:Level)=>{
+const getMoney = (item:Level):void=>{
     money.value = arrondir(money.value +  item.stock);
-    item.stock = 0
+    item.stock = 0;
 }
 
-const arrondir=(number:number)=>{
-    return Math.ceil(number*100)/100
+const arrondir=(number:number):number=>{
+    return Math.ceil(number*100)/100;
 }
-const unblock=(item:Level)=>{
+const unblock=(item:Level):void=>{
 
     item.isLock = false;
     item.nextUnblock = false;
+}
+
+const openPopup=(id:number)=>{  
+    popup.value=true
+    selectLevel.value = level.value[id]
+}
+
+const handleClosePopup = (data:boolean) => {
+    popup.value = data
 }
 
 </script>

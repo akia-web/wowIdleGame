@@ -1,7 +1,7 @@
 export interface Level {
     name:string,
     index:number,
-    level:number | string,
+    level:number,
     maxLevel:number 
     price1: number,
     priceMax:number,
@@ -12,10 +12,8 @@ export interface Level {
     complete: number;
     isClickable : boolean,
     speedWorkers:number,
-    addWorker: number[],
     nextUnblock: boolean,
     priceUnblock : number
     recolteTime:number,
     haveManager:boolean
-
 }

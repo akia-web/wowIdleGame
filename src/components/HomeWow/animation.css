@@ -1,18 +1,18 @@
 @keyframes moveWorkers0{
     0%,100%{
-        left: 40px;
+        left: 1%; /*40px*/
         background-image:url('src/assets/elfe/stand.gif');
         background-size: cover;
     }
     1%{
         background-image:url('src/assets/elfe/aller.gif');
         background-size: cover;
-        left: 40px;
+        left: 1%;
     }
     40%{
         background-image:url('src/assets/elfe/aller.gif');
         background-size: cover;
-        left:calc(90% - 40px);;
+        left:calc(100% - 1% - 90px);;
        
     }
     41%{
@@ -22,7 +22,7 @@
     60%{
         background-image:url('src/assets/elfe/open.gif');
         background-size: cover;
-        left:calc(90% - 40px);
+        left:calc(100% -  1% - 90px);
     }
     61%{
         background-image:url('src/assets/elfe/retour.gif');
@@ -31,26 +31,26 @@
     99%{
         background-image:url('src/assets/elfe/retour.gif');
         background-size: cover; 
-        left:40px
+        left: 1%
     }
     
 }
 
 @keyframes moveWorkers1{
     0%,100%{
-        left: 30px;
+        left: -0.5%; /*30px*/
         background-image:url('src/assets/human/stand.gif');
         background-size: cover;
     }
     1%{
         background-image:url('src/assets/human/aller.gif');
         background-size: cover;
-        left: 30px;
+        left: -0.5%;
     }
     40%{
         background-image:url('src/assets/human/aller.gif');
         background-size: cover;
-        left:calc(90% - 30px);
+        left:calc(100% - 0.5% - 90px);
        
     }
     41%{
@@ -60,7 +60,7 @@
     60%{
         background-image:url('src/assets/human/open.gif');
         background-size: cover;
-        left:calc(90% - 30px)
+        left:calc(100% - 0.5% - 90px)
     }
     61%{
         background-image:url('src/assets/human/retour.gif');
@@ -69,25 +69,25 @@
     99%{
         background-image:url('src/assets/human/retour.gif');
         background-size: cover; 
-        left:30px
+        left: -0.5%
     }
     
 }
 @keyframes moveWorkers2{
     0%,100%{
-        left: 20px;
+        left: -1%; /*20px*/
         background-image:url('src/assets/nain/stand.gif');
         background-size: cover;
     }
     1%{
         background-image:url('src/assets/nain/aller.gif');
         background-size: cover;
-        left: 20px;
+        left: -1%;
     }
     40%{
         background-image:url('src/assets/nain/aller.gif');
         background-size: cover;
-        left:calc(90% - 20px);
+        left:calc(100% - 1% - 90px);
        
     }
     41%{
@@ -97,7 +97,7 @@
     60%{
         background-image:url('src/assets/nain/open.gif');
         background-size: cover;
-        left:calc(90% - 20px)
+        left:calc(100% - 1% - 90px)
     }
     61%{
         background-image:url('src/assets/nain/retour.gif');
@@ -106,7 +106,7 @@
     99%{
         background-image:url('src/assets/nain/retour.gif');
         background-size: cover; 
-        left:20px
+        left:- 1%
     }
     
 }

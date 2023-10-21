@@ -1,0 +1,36 @@
+.containerPopup{
+    background-color: rgb(73, 73, 167);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: 80vh;
+    transform: translate(-50% ,-50%);
+    width: 80%;
+    border: 2px solid rgb(143, 143, 242);
+    border-radius: 10px;
+}
+.header-popup{
+    background-color: rgb(125, 125, 210);
+    border-top-right-radius: 8px;
+    border-top-left-radius: 8px;
+}
+
+.cursor-pointer span:hover{
+    font-weight: bold;
+}
+
+.container-bas{
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+.container-level-up{
+    width: 20%;
+}
+.container-level-up div{
+    width: 50%;
+    text-align: center;
+}
+.active{
+    background-color: aqua;
+}

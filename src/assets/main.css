@@ -20,11 +20,18 @@
     align-items: flex-end;
 }
 
+.dpf-j-arround{
+    justify-content: space-around;
+}
  /* container */
 
 .container20{
     height: 100%;
     width: 20%;
+}
+.container10{
+    height: 100%;
+    width: 10%;
 }
 .container60{
     width: 60%;
@@ -33,4 +40,11 @@
 
 .mb{
     margin-bottom: 2em;
+}
+.padding10{
+    padding: 10px;
+}
+
+.cursor-pointer{
+    cursor: pointer;
 }
