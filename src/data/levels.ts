@@ -1,6 +1,6 @@
 import type { Level } from "@/types/Level";
 import { ref } from 'vue';
-export const maxLevel:number = 3; 
+export const maxLevel:number = 10; 
 export const addWorker: number[] = [2, 3, 4, 5]
 
 
@@ -9,7 +9,7 @@ export const money = ref(0);
 export const level = ref<Level[]>( 
 [
     {
-        name:'Foret d',
+        name:`Forêt d'Elwynn`,
         index:0,
         level:1,
         maxLevel: maxLevel,

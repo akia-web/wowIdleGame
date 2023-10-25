@@ -27,8 +27,8 @@
                     <div class="container-amelioration container10 dpf-column">
                         <div class="amelioration" :class="{'active':money >= item.price1 && item.level !== maxLevel}"
                         v-on:click="openPopup(item.index)">
-                        <span> lvl {{ item.level }}</span> <br>
-                        <span v-if="item.level !== maxLevel"> {{item.price1}} $</span>
+                        <p> Niveau </p>
+                        <p class="text-center">{{ item.level }}</p>
                         </div>
 
                         <!-- <div class="amelioration" :class="{'active':money >= item.price1 && item.level !== 'max'}"
@@ -71,20 +71,29 @@ const getManager=(item:Level):void=>{
 }
 
 
-const handleAddWorker = (data:Level) => {
+const handleAddWorker = (data:Level, add:number) => {
+    console.log(data)
     const worker =  document.getElementsByClassName("class-"+data.index);
 
-   setTimeout(function () {
-    const bidule =  worker[data.workers-1] as HTMLElement
-    const option : {ecart:string, url:string } = getBackgroundAndGap(data)
-    bidule.style.left = option!.ecart
-    bidule.style.backgroundImage = option!.url
-    }, 100 )
+    const lastWorker = data.workers - add
+    console.log('lastWorker : '+ lastWorker)
+    
+    for(let i = lastWorker+1; i<=lastWorker + add; i++){
+        console.log(i)
+        setTimeout(function () {
+        const bidule =  worker[i-1] as HTMLElement
+        const option : {ecart:string, url:string } = getBackgroundAndGap(i)
+        bidule.style.left = option!.ecart
+        bidule.style.backgroundImage = option!.url
+        }, 100 )
+
+    }
+
 
 }
 
-const getBackgroundAndGap=(item:Level):{ ecart: string; url: string }=>{
-    switch (item.workers){
+const getBackgroundAndGap=(item:number):{ ecart: string; url: string }=>{
+    switch (item){
         case 1:
         return {ecart:"1%",url:"url('src/assets/elfe/stand.gif')" };
         case 2: 

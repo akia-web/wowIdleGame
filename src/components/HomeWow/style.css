@@ -50,12 +50,22 @@
     align-items: center;
 }
 .amelioration{
-    background-color: lightgray;
+    background-color: rgb(103, 170, 227);
     color : white;
     padding: 10px;
     margin-right: 10px;
     height: 70px;
     width: 70px;
+    border-radius: 7px;
+    border:1px solid white;
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+}
+
+.amelioration:hover{
+    background-color: rgb(6, 28, 173);
+    border-color: #f0f713;
+    color:  #f0f713;
 }
 .active{
     background-color: rgb(103, 170, 227);

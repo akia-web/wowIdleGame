@@ -14,6 +14,9 @@
     border-top-right-radius: 8px;
     border-top-left-radius: 8px;
 }
+.main-popup{
+    padding: 10px;
+}
 
 .cursor-pointer span:hover{
     font-weight: bold;
@@ -23,14 +26,57 @@
     position: absolute;
     bottom: 0;
     width: 100%;
+    background-color:rgb(50, 50, 135) ;
+    color: white;
 }
 .container-level-up{
-    width: 20%;
+    width: 15%;
+    background-color: rgb(50, 50, 135);
+    border: 2px solid rgb(125, 125, 210);
+    padding: 5px;
 }
 .container-level-up div{
-    width: 50%;
+    width: 48%;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 7px;
+    padding: 2px;
+}
+.container-level-up div:hover{
     text-align: center;
 }
 .active{
-    background-color: aqua;
+    background-color: rgb(27, 138, 138);
+}
+
+h1, .main-popup{
+    color: white;
+}
+
+button{
+    border-radius: 7px;
+    padding: 5px;
+    background-color: rgb(111, 194, 111);
+    color: white;
+    cursor: pointer;
+}
+
+.buy{
+    font-size: 16px;
+}
+
+.level{
+    background-color: green;
+    padding: 5px;
+    border-radius: 7px;
+    margin-bottom: 0.5em;
+}
+
+
+.disabled-button{
+    background-color: rgb(178, 199, 178);
+    cursor: not-allowed;
+}
+.disabled-text{
+    background-color: rgb(77, 79, 77);
 }
