@@ -21,7 +21,7 @@ export const level = ref<Level[]>(
         isLock:false,
         complete: 2,
         isClickable: true,
-        speedWorkers:8000,
+        speedWorkers:4000,
         nextUnblock:false,
         priceUnblock: 0,
         recolteTime:1000,

@@ -24,14 +24,21 @@
     justify-content: space-around;
 }
  /* container */
-
+ .container10{
+    height: 100%;
+    width: 10%;
+}
 .container20{
     height: 100%;
     width: 20%;
 }
-.container10{
+.container30{
     height: 100%;
-    width: 10%;
+    width: 30%;
+}
+.container40{
+    width: 40%;
+    height: 100%;
 }
 .container60{
     width: 60%;
@@ -61,4 +68,9 @@
     color: red
 }
 
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
 

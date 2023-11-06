@@ -111,6 +111,82 @@
     
 }
 
+@keyframes moveWorkers3{
+    0%,100%{
+        left: -1.5%; /*20px*/
+        background-image:url('src/assets/nain/stand.gif');
+        background-size: cover;
+    }
+    1%{
+        background-image:url('src/assets/nain/aller.gif');
+        background-size: cover;
+        left: -1.5%;
+    }
+    40%{
+        background-image:url('src/assets/nain/aller.gif');
+        background-size: cover;
+        left:calc(100% - 1.5% - 90px);
+       
+    }
+    41%{
+        background-image:url('src/assets/nain/open.gif');
+        background-size: cover;
+    }
+    60%{
+        background-image:url('src/assets/nain/open.gif');
+        background-size: cover;
+        left:calc(100% - 1.5% - 90px)
+    }
+    61%{
+        background-image:url('src/assets/nain/retour.gif');
+        background-size: cover; 
+    }
+    99%{
+        background-image:url('src/assets/nain/retour.gif');
+        background-size: cover; 
+        left:- 1.5%
+    }
+    
+}
+
+@keyframes moveWorkers4{
+    0%,100%{
+        left: -2%; /*20px*/
+        background-image:url('src/assets/nain/stand.gif');
+        background-size: cover;
+    }
+    1%{
+        background-image:url('src/assets/nain/aller.gif');
+        background-size: cover;
+        left: -2%;
+    }
+    40%{
+        background-image:url('src/assets/nain/aller.gif');
+        background-size: cover;
+        left:calc(100% - 2% - 90px);
+       
+    }
+    41%{
+        background-image:url('src/assets/nain/open.gif');
+        background-size: cover;
+    }
+    60%{
+        background-image:url('src/assets/nain/open.gif');
+        background-size: cover;
+        left:calc(100% - 2% - 90px)
+    }
+    61%{
+        background-image:url('src/assets/nain/retour.gif');
+        background-size: cover; 
+    }
+    99%{
+        background-image:url('src/assets/nain/retour.gif');
+        background-size: cover; 
+        left:- 2%
+    }
+    
+}
+
 .workers0{
     animation-name: moveWorkers0;
     animation-duration: 2s;
@@ -126,6 +202,20 @@
 }
 .workers2{
     animation-name: moveWorkers2;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear ;
+}
+
+.workers3{
+    animation-name: moveWorkers3;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    animation-timing-function: linear ;
+}
+
+.workers4{
+    animation-name: moveWorkers4;
     animation-duration: 2s;
     animation-iteration-count: 1;
     animation-timing-function: linear ;
